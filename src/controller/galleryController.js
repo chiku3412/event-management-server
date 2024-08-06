@@ -1,4 +1,5 @@
 const galleryData = require("../model/galleryModel");
+const multer = require('multer');
 
 const getGalleryImage = async (req, res) => {
     try {
@@ -12,14 +13,16 @@ const getGalleryImage = async (req, res) => {
 
 const addGalleryImage = async (req, res) => {
     try {
-        const create = new galleryData({
-            eventImage: req.body.eventImage,
-        });
+        const { eventImage } = req.body;
+        const create = new galleryData();
+        if (req.files && req.files.eventImage) {
+            create.eventImage = req.files.eventImage[0].path.replace(/\\/g, '/').replace(/^.*[\\\/]/, '');
+        }
         const response = await create.save();
         res.status(201).send(response);
     } catch (error) {
         res.status(401).send(error.message);
-    }
+    }   
 }
 
 const deleteGalleryImage = async (req, res) => {
