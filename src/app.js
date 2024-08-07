@@ -14,6 +14,12 @@ app.use(cors());
 // app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use('/upload', express.static(path.join(__dirname, 'src/assets/upload')));
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
+
 const userRouter = require("./router/userRouter");
 const productRouter = require("./router/productRouter");
 const eventRouter = require("./router/eventRouter");
