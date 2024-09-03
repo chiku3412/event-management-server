@@ -13,7 +13,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const uploadPath = path.join(__dirname, '../../../event-management-client/src/assets/images');
+        const uploadPath = path.join(__dirname, 'event-management-client/src/assets/images');
         console.log(`Resolved upload path: ${uploadPath}`);  // Log the resolved path
         cb(null, uploadPath);
     },
