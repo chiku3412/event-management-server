@@ -3,7 +3,7 @@ const user = require("../model/userModel");
 const ObjectId = require('mongodb').ObjectID;
 
 const createProduct = async (req, res) => {
-    console.log(req.body.product_catagory);
+    // console.log(req.body.product_catagory);
     try {
         const create = new products({
             product_image: req.body.product_image,

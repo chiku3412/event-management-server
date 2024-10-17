@@ -25,7 +25,7 @@ const deleteNewsletterData = async (req, res) => {
     try {   
         const _id = req.params.id;
         const deleteNewsletter = await newsletterData.findByIdAndDelete(_id);
-        console.log("deleteContact:-", deleteNewsletter)
+        // console.log("deleteContact:-", deleteNewsletter)
         res.status(200).send(deleteNewsletter);
     } catch (error) {
         res.status(400).send(error.message);

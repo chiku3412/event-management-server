@@ -30,7 +30,7 @@ const deleteContactData = async (req, res) => {
     try {
         const _id = req.params.id;
         const deleteContact = await contactData.findByIdAndDelete(_id);
-        console.log("deleteContact:-", deleteContact)
+        // console.log("deleteContact:-", deleteContact)
         res.status(200).send(deleteContact);
     } catch (error) {
         res.status(400).send(error.message);
